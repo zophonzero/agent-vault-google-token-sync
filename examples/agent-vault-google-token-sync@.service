@@ -1,0 +1,32 @@
+[Unit]
+Description=Google service-account token publication (%i)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+DynamicUser=yes
+LoadCredential=config:/etc/agent-vault-google-token-sync/%i/config.json
+LoadCredentialEncrypted=google-key:/etc/agent-vault-google-token-sync/%i/google-key.cred
+LoadCredentialEncrypted=av-writer:/etc/agent-vault-google-token-sync/%i/av-writer.cred
+ExecStart=/opt/agent-vault-google-token-sync/venv/bin/agent-vault-google-token-sync --config %d/config --once
+TimeoutStartSec=90
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+AmbientCapabilities=
+LimitCORE=0
+Environment=PYTHONDONTWRITEBYTECODE=1

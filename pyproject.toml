@@ -1,0 +1,33 @@
+[build-system]
+requires = ["uv_build==0.9.30"]
+build-backend = "uv_build"
+
+[project]
+name = "agent-vault-google-token-sync"
+version = "0.1.0"
+description = "Fixed-identity Google service-account token synchronizer for standalone Agent Vault"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = [
+    "google-auth[requests]==2.62.0",
+    "requests==2.34.2",
+]
+classifiers = [
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+
+[project.scripts]
+agent-vault-google-token-sync = "av_google_token_sync.cli:main"
+
+[project.urls]
+Repository = "https://github.com/zophonzero/agent-vault-google-token-sync"
+Issues = "https://github.com/zophonzero/agent-vault-google-token-sync/issues"
+
+[tool.uv.build-backend]
+module-name = "av_google_token_sync"
+module-root = ""
+source-include = ["tests/**", "requirements.lock", "SECURITY.md", "docs/**", "examples/**"]

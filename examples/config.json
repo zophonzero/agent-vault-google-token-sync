@@ -1,0 +1,10 @@
+{
+  "service_account_email": "reader@example-project.iam.gserviceaccount.com",
+  "scopes": ["https://www.googleapis.com/auth/drive.readonly"],
+  "vault": "google-reader",
+  "credential_key": "GOOGLE_ACCESS_TOKEN",
+  "av_base_url": "http://127.0.0.1:14321",
+  "allow_loopback_http": true,
+  "service_account_credential": "google-key",
+  "writer_token_credential": "av-writer"
+}
